@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 244 239 234; /* #F4EFEA */
+    --foreground: 56 56 56; /* #383838 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 56 56 56;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 56 56 56;
+
+    --primary: 56 56 56;
+    --primary-foreground: 244 239 234;
+
+    --secondary: 22 168 152; /* #16AA98 */
+    --secondary-foreground: 244 239 234;
+
+    --muted: 244 239 234;
+    --muted-foreground: 56 56 56;
+
+    --accent: 22 168 152;
+    --accent-foreground: 244 239 234;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 244 239 234;
+
+    --border: 56 56 56;
+    --input: 56 56 56;
+    --ring: 22 168 152;
+
+    --radius: 0.125rem; /* 2px */
+  }
+
+  .dark {
+    --background: 17 17 17; /* #111111 */
+    --foreground: 244 239 234;
+
+    --card: 23 23 23;
+    --card-foreground: 244 239 234;
+
+    --popover: 23 23 23;
+    --popover-foreground: 244 239 234;
+
+    --primary: 244 239 234;
+    --primary-foreground: 56 56 56;
+
+    --secondary: 22 168 152;
+    --secondary-foreground: 244 239 234;
+
+    --muted: 38 38 38;
+    --muted-foreground: 163 163 163;
+
+    --accent: 22 168 152;
+    --accent-foreground: 244 239 234;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 244 239 234;
+
+    --border: 56 56 56;
+    --input: 56 56 56;
+    --ring: 22 168 152;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(136, 136, 136);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgb(100, 100, 100);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: rgb(30, 30, 30);
+  }
+}
+
+@layer utilities {
+  /* Typography utilities */
+  .text-hero {
+    font-size: 72px;
+    line-height: 86.4px;
+    letter-spacing: 1.44px;
+  }
+
+  .text-subtitle {
+    font-size: 16px;
+    line-height: 19.2px;
+    letter-spacing: 0.32px;
+  }
+
+  .text-button {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Responsive hero text */
+  @media (max-width: 1024px) {
+    .text-hero {
+      font-size: 48px;
+      line-height: 57.6px;
+      letter-spacing: 0.96px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .text-hero {
+      font-size: 36px;
+      line-height: 43.2px;
+      letter-spacing: 0.72px;
+    }
+  }
+
+  /* Container utilities */
+  .container-hero {
+    margin: 0 306.5px;
+    padding: 110px 30px 180px;
+  }
+
+  @media (max-width: 1400px) {
+    .container-hero {
+      margin: 0 100px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .container-hero {
+      margin: 0 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container-hero {
+      margin: 0 20px;
+      padding: 60px 20px 100px;
+    }
+  }
+
+  /* Section spacing */
+  .section-spacing {
+    padding: 180px 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-spacing {
+      padding: 100px 0;
+    }
+  }
+}
