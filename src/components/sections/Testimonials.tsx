@@ -164,13 +164,98 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
           </div>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Mobile Horizontal Carousel (hidden on md+) */}
+        <div className="md:hidden -mx-4 px-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+          <motion.div
+            className="flex gap-4 pb-4 w-max"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                className="flex-shrink-0 w-[calc(100vw-2rem)] snap-center"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <Card
+                  variant="default"
+                  padding="lg"
+                  className="h-full hover:shadow-lg transition-shadow duration-300"
+                >
+                  <CardContent className="space-y-6">
+                    {/* Header: Avatar + Info */}
+                    <div className="flex items-start gap-4">
+                      {/* Avatar */}
+                      <div
+                        className="flex-shrink-0 w-14 h-14 rounded-[4px] bg-button-blue border-2 border-primary-dark flex items-center justify-center"
+                        aria-hidden="true"
+                      >
+                        <span className="font-aeonik-mono text-lg font-semibold text-primary-dark">
+                          {testimonial.avatar}
+                        </span>
+                      </div>
+
+                      {/* Name, Company, Location */}
+                      <div className="flex-1">
+                        <h3 className="font-aeonik-mono text-lg uppercase text-primary-dark mb-1">
+                          {testimonial.name}
+                        </h3>
+                        <p className="font-inter text-sm text-primary-dark/70">
+                          {testimonial.company} • {testimonial.location}
+                        </p>
+                      </div>
+
+                      {/* Icon */}
+                      <div className="flex-shrink-0 text-accent-teal">
+                        {testimonial.icon}
+                      </div>
+                    </div>
+
+                    {/* Quote */}
+                    <blockquote className="relative">
+                      <Quote
+                        className="absolute -top-2 -left-2 w-8 h-8 text-primary-dark/10"
+                        aria-hidden="true"
+                      />
+                      <p className="font-inter text-base text-primary-dark leading-relaxed pl-6">
+                        {testimonial.quote}
+                      </p>
+                    </blockquote>
+
+                    {/* Metric Badge */}
+                    <div className="flex items-center justify-between pt-4 border-t-2 border-primary-dark/10">
+                      <div>
+                        <div className="font-aeonik-mono text-2xl uppercase text-accent-teal font-semibold">
+                          {testimonial.metric}
+                        </div>
+                        <div className="font-inter text-sm text-primary-dark/70 mt-1">
+                          {testimonial.metricValue}
+                        </div>
+                      </div>
+                      <div
+                        className="w-10 h-10 rounded-full bg-accent-teal/10 flex items-center justify-center"
+                        aria-hidden="true"
+                      >
+                        {testimonial.icon}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Desktop Grid (hidden on mobile) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
         >
           {testimonials.map((testimonial) => (
             <motion.div
