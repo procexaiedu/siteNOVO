@@ -14,6 +14,7 @@ import { Metrics } from './components/sections/Metrics'
 import { FAQ } from './components/sections/FAQ'
 import { CTAFinal } from './components/sections/CTAFinal'
 import { Footer } from './components/sections/Footer'
+import { StickyMobileCTA } from './components/common/StickyMobileCTA'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -87,6 +88,13 @@ function App() {
           <CTAFinal />
         </main>
         <Footer />
+
+        {/* Sticky mobile CTA bar - Appears after 800px scroll on mobile */}
+        <StickyMobileCTA
+          scrollThreshold={800}
+          buttonText="AGENDAR DIAGNÓSTICO"
+          message="Descubra como otimizar seus dados"
+        />
       </div>
     </>
   )

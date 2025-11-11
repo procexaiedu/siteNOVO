@@ -95,6 +95,8 @@ export function ContactForm({ onSuccess, className = '' }: ContactFormProps) {
               error={errors.name?.message}
               placeholder="João Silva"
               disabled={isSubmitting}
+              inputMode="text"
+              autoComplete="name"
             />
           </div>
 
@@ -107,6 +109,8 @@ export function ContactForm({ onSuccess, className = '' }: ContactFormProps) {
               error={errors.email?.message}
               placeholder="joao@empresa.com"
               disabled={isSubmitting}
+              inputMode="email"
+              autoComplete="email"
             />
           </div>
 
@@ -119,6 +123,8 @@ export function ContactForm({ onSuccess, className = '' }: ContactFormProps) {
               error={errors.phone?.message}
               placeholder="(11) 98765-4321"
               disabled={isSubmitting}
+              inputMode="tel"
+              autoComplete="tel"
             />
           </div>
 
@@ -130,6 +136,8 @@ export function ContactForm({ onSuccess, className = '' }: ContactFormProps) {
               error={errors.company?.message}
               placeholder="Nome da Empresa"
               disabled={isSubmitting}
+              inputMode="text"
+              autoComplete="organization"
             />
           </div>
         </div>
@@ -142,7 +150,8 @@ export function ContactForm({ onSuccess, className = '' }: ContactFormProps) {
           <select
             {...register('employees')}
             disabled={isSubmitting}
-            className="w-full px-4 py-2 border-2 border-primary-dark rounded bg-white dark:bg-gray-700 text-foreground focus:outline-none focus:ring-2 focus:ring-accent-teal"
+            className="w-full px-4 py-2 md:py-2 border-2 border-primary-dark rounded bg-white dark:bg-gray-700 text-foreground focus:outline-none focus:ring-2 focus:ring-accent-teal min-h-[44px] md:min-h-auto"
+            autoComplete="organization-type"
           >
             <option value="">Selecione...</option>
             <option value="1-10">1-10</option>
@@ -163,7 +172,7 @@ export function ContactForm({ onSuccess, className = '' }: ContactFormProps) {
             disabled={isSubmitting}
             rows={4}
             placeholder="Conte-nos sobre seu desafio e como podemos ajudar..."
-            className={`w-full px-4 py-2 border-2 rounded bg-white dark:bg-gray-700 text-foreground focus:outline-none focus:ring-2 ${
+            className={`w-full px-4 py-2 border-2 rounded bg-white dark:bg-gray-700 text-foreground focus:outline-none focus:ring-2 min-h-[120px] md:min-h-[100px] ${
               errors.message
                 ? 'border-red-500 focus:ring-red-500'
                 : 'border-primary-dark focus:ring-accent-teal'

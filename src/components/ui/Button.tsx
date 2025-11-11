@@ -12,7 +12,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
  */
 const buttonVariants = cva(
   // Base styles - applied to all variants
-  'inline-flex items-center justify-center font-aeonik-mono uppercase text-sm tracking-button transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+  'inline-flex items-center justify-center font-aeonik-mono uppercase text-sm tracking-button transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 min-h-[44px] md:min-h-auto',
   {
     variants: {
       variant: {
@@ -21,10 +21,10 @@ const buttonVariants = cva(
         link: 'bg-transparent text-primary-dark underline-offset-4 hover:underline',
       },
       size: {
-        default: 'px-[22px] py-[16.5px] leading-4',
-        sm: 'px-4 py-2 text-xs',
-        lg: 'px-8 py-5 text-base',
-        icon: 'h-10 w-10',
+        default: 'px-[22px] py-[16.5px] leading-4 md:min-h-auto',
+        sm: 'px-4 py-2 text-xs md:min-h-auto',
+        lg: 'px-8 py-5 text-base md:min-h-auto',
+        icon: 'h-10 w-10 md:h-10 md:w-10',
       },
     },
     defaultVariants: {

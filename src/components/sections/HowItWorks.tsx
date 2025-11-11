@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
   Palette,
@@ -8,11 +8,13 @@ import {
   Rocket,
   ArrowRight,
   Clock,
-  Shield
+  Shield,
+  ChevronDown
 } from 'lucide-react';
 import { Container } from '../ui/Container';
 import { Card, CardContent } from '../ui/Card';
 import { Button } from '../ui/Button';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 /**
  * HowItWorks / Como Funciona Section
@@ -28,7 +30,9 @@ import { Button } from '../ui/Button';
  * - Total implementation: 14 days
  * - Money-back guarantee: 1st month free if not delivered in 14 days
  * - Professional icons (48px, stroke-2)
- * - Horizontal timeline on desktop, vertical on mobile
+ * - Mobile optimization: Accordion interface reduces scroll by ~2,000px
+ * - Desktop: 5-column horizontal timeline
+ * - Mobile: Accordion with expandable steps
  *
  * @example
  * <HowItWorks />
@@ -136,6 +140,13 @@ const connectorVariants = {
 };
 
 export const HowItWorks: React.FC = () => {
+  const [expandedStep, setExpandedStep] = useState<number | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const toggleStep = (stepNumber: number) => {
+    setExpandedStep(expandedStep === stepNumber ? null : stepNumber);
+  };
+
   return (
     <section
       className="relative bg-gradient-to-b from-background to-button-blue/5 py-[90px] md:py-[110px] lg:py-[180px]"
@@ -168,16 +179,104 @@ export const HowItWorks: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Timeline - Desktop Horizontal / Mobile Vertical */}
+        {/* Mobile Accordion - Hidden on md and up */}
+        <div className="lg:hidden mb-8 space-y-3">
+          {steps.map((step) => (
+            <div key={step.number} className="border-2 border-primary-dark rounded-[4px] overflow-hidden">
+              {/* Accordion Header */}
+              <motion.button
+                onClick={() => toggleStep(step.number)}
+                className="w-full flex items-center justify-between p-4 hover:bg-background/50 transition-colors"
+                aria-expanded={expandedStep === step.number}
+                aria-controls={`step-content-${step.number}`}
+              >
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-8 h-8 flex items-center justify-center bg-primary-dark text-background rounded-full flex-shrink-0">
+                    <span className="font-aeonik-mono text-sm font-semibold">
+                      {step.number}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="font-aeonik-mono text-sm uppercase text-primary-dark leading-tight">
+                      {step.title}
+                    </h3>
+                    <p className="font-inter text-xs text-primary-dark/60 mt-0.5">
+                      {step.subtitle}
+                    </p>
+                  </div>
+                </div>
+                <motion.div
+                  animate={{ rotate: expandedStep === step.number ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex-shrink-0 ml-4"
+                >
+                  <ChevronDown className="w-5 h-5 text-primary-dark" strokeWidth={2} />
+                </motion.div>
+              </motion.button>
+
+              {/* Accordion Content */}
+              <AnimatePresence>
+                {expandedStep === step.number && (
+                  <motion.div
+                    id={`step-content-${step.number}`}
+                    initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                    transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3 }}
+                    className="border-t-2 border-primary-dark bg-background/30 px-4 py-4"
+                  >
+                    {/* Duration */}
+                    <div className="flex items-center gap-2 py-2 px-3 bg-white rounded-[2px] border border-primary-dark/20 mb-4">
+                      <Clock className="w-4 h-4 text-accent-teal" aria-hidden="true" />
+                      <span className="font-aeonik-mono text-xs uppercase text-primary-dark">
+                        {step.duration}
+                      </span>
+                      {step.durationHighlight && (
+                        <span className="ml-auto font-aeonik-mono text-xs font-semibold uppercase text-accent-teal">
+                          {step.durationHighlight}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Description */}
+                    <p className="font-inter text-sm text-primary-dark/80 leading-relaxed mb-4">
+                      {step.description}
+                    </p>
+
+                    {/* Deliverables */}
+                    <div>
+                      <p className="font-aeonik-mono text-xs uppercase text-primary-dark/60 mb-2">
+                        Entregas:
+                      </p>
+                      <ul className="space-y-1" role="list">
+                        {step.deliverables.map((deliverable, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-2 font-inter text-xs text-primary-dark/70"
+                          >
+                            <span className="text-accent-teal flex-shrink-0">✓</span>
+                            <span>{deliverable}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+
+        {/* Timeline - Desktop Horizontal / Tablet Vertical */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="relative"
+          className="hidden lg:block relative"
         >
           {/* Steps Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-4 relative">
+          <div className="grid grid-cols-5 gap-4 relative">
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
                 {/* Step Card */}

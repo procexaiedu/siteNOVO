@@ -141,39 +141,14 @@
     }
   }
 
-  /* Container utilities */
+  /* Container utilities - Mobile-first with fluid scaling */
   .container-hero {
-    margin: 0 306.5px;
-    padding: 110px 30px 180px;
+    margin: 0 clamp(16px, 4vw, 306.5px);
+    padding: clamp(40px, 8vw, 110px) clamp(16px, 4vw, 30px) clamp(60px, 10vw, 180px);
   }
 
-  @media (max-width: 1400px) {
-    .container-hero {
-      margin: 0 100px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .container-hero {
-      margin: 0 50px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .container-hero {
-      margin: 0 20px;
-      padding: 60px 20px 100px;
-    }
-  }
-
-  /* Section spacing */
+  /* Section spacing - Responsive with fluid scaling */
   .section-spacing {
-    padding: 180px 0;
-  }
-
-  @media (max-width: 768px) {
-    .section-spacing {
-      padding: 100px 0;
-    }
+    padding: clamp(60px, 10vw, 180px) 0;
   }
 }

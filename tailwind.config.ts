@@ -80,8 +80,13 @@ const config: Config = {
         'button': '0.5px',
       },
       spacing: {
-        'xxl': '180px',
-        'xl': '110px',
+        'xxl': 'clamp(60px, 8vw, 180px)',  // Mobile-first: 60px → 180px (desktop)
+        'xl': 'clamp(40px, 6vw, 110px)',   // Mobile-first: 40px → 110px (desktop)
+      },
+      // Custom padding utilities for responsive mobile-first design
+      padding: {
+        'responsive-x': 'clamp(16px, 4vw, 306.5px)',  // Horizontal padding responsive
+        'responsive-section': 'clamp(60px, 10vw, 180px)',  // Section vertical padding
       },
       keyframes: {
         'accordion-down': {

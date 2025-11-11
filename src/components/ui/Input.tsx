@@ -115,8 +115,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={type}
             id={inputId}
             className={cn(
-              // Base styles
-              'w-full rounded-[2px] border-2 px-4 py-3 font-inter text-base transition-all duration-200',
+              // Base styles - Mobile-first with min-h for touch targets
+              'w-full rounded-[2px] border-2 px-4 py-3 font-inter text-base transition-all duration-200 min-h-[44px] md:min-h-auto',
               'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2',
               'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-50',
               // Border colors
@@ -220,7 +220,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           rows={rows}
           className={cn(
-            'w-full rounded-[2px] border-2 px-4 py-3 font-inter text-base transition-all duration-200',
+            'w-full rounded-[2px] border-2 px-4 py-3 font-inter text-base transition-all duration-200 min-h-[120px] md:min-h-[100px]',
             'placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2',
             'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-50',
             'resize-y',
