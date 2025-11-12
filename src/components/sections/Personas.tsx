@@ -42,7 +42,7 @@ const defaultPersonas: Persona[] = [
     id: '1',
     title: 'CEOs e Empreendedores',
     icon: <Briefcase className="w-8 h-8" aria-hidden="true" />,
-    iconBgColor: 'bg-button-blue',
+    iconBgColor: 'bg-cta-blue',
     challenge: 'Crescer sem aumentar custo fixo de equipe',
     solution:
       'Agentes de IA atuam como colaboradores que escalam conforme demanda. Pague apenas pelo que usar.',
@@ -66,7 +66,7 @@ const defaultPersonas: Persona[] = [
     id: '3',
     title: 'Diretores Comerciais',
     icon: <TrendingUp className="w-8 h-8" aria-hidden="true" />,
-    iconBgColor: 'bg-banner-yellow',
+    iconBgColor: 'bg-secondary-blue',
     challenge: 'Aumentar conversão e qualificar leads de forma escalável',
     solution:
       'Agentes qualificam leads, fazem follow-up imediato e nutrem prospects até o momento certo de venda.',

@@ -42,6 +42,7 @@ const config: Config = {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
           teal: '#16AA98',
+          purple: '#7C3AED',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -54,11 +55,18 @@ const config: Config = {
         // ProceX AI Custom Colors
         'neutral-beige': '#F4EFEA',
         'background-cream': '#F4EFEA',
+        // Legacy (evitar em novos usos): 'button-blue'
         'button-blue': '#6fc2ff',
         'banner-yellow': '#FFD700',
         'cube-teal-light': '#3db5b5',
         'cube-teal-dark': '#2d9a9a',
         'cube-teal-mid': '#5ec9ba',
+        // Novos tokens de paleta
+        'brand-teal': '#16AA98',        // Primária
+        'secondary-blue': '#1E3A8A',    // Secundária
+        'accent-purple': '#7C3AED',     // Acento IA
+        'cta-green': '#047857',         // CTA primário
+        'cta-blue': '#3B82F6',          // CTA alternativo
       },
       borderRadius: {
         lg: 'var(--radius)',

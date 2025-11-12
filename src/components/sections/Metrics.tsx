@@ -58,8 +58,8 @@ const defaultMetrics: Metric[] = [
     label: 'Implementação',
     description: 'Do diagnóstico ao go-live garantido',
     icon: <Clock className="w-8 h-8" aria-hidden="true" />,
-    iconBgColor: 'bg-button-blue/20',
-    iconColor: 'text-button-blue',
+    iconBgColor: 'bg-secondary-blue/10',
+    iconColor: 'text-secondary-blue',
   },
   {
     id: '3',
@@ -80,8 +80,8 @@ const defaultMetrics: Metric[] = [
     label: 'Satisfação',
     description: 'Avaliação média dos clientes',
     icon: <Star className="w-8 h-8" aria-hidden="true" />,
-    iconBgColor: 'bg-amber-100',
-    iconColor: 'text-amber-600',
+    iconBgColor: 'bg-accent-purple/10',
+    iconColor: 'text-accent-purple',
   },
 ];
 
@@ -300,7 +300,7 @@ export const Metrics: React.FC<MetricsProps> = ({
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-beige border-2 border-primary-dark/10 rounded-[4px]">
               <Star
-                className="w-4 h-4 text-amber-500 fill-amber-500"
+                className="w-4 h-4 text-accent-purple fill-accent-purple"
                 aria-hidden="true"
               />
               <span className="font-inter text-sm text-primary-dark">

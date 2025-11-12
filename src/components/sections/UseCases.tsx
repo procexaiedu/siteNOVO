@@ -185,7 +185,7 @@ export const UseCases: React.FC = () => {
                 aria-controls={`use-case-${index}`}
                 className={`flex-shrink-0 px-4 py-2 rounded text-sm font-aeonik-mono uppercase transition-all border-2 ${
                   activeTab === index
-                    ? 'bg-button-blue text-primary-dark border-primary-dark'
+                    ? 'bg-cta-blue text-primary-dark border-primary-dark'
                     : 'bg-white text-primary-dark border-primary-dark/30 hover:border-primary-dark'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -389,7 +389,8 @@ export const UseCases: React.FC = () => {
                   <Button
                     variant="secondary"
                     size="default"
-                    className="w-full group-hover:bg-button-blue/10 transition-colors"
+                    className="w-full group-hover:bg-cta-blue/10 transition-colors"
+                    className="w-full group-hover:bg-cta-blue/10 transition-colors"
                     aria-label={`Explorar solução ${useCase.title}`}
                   >
                     EXPLORAR

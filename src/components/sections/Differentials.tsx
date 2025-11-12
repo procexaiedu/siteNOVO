@@ -147,7 +147,7 @@ export const Differentials: React.FC = () => {
                   {/* Icon */}
                   <motion.div
                     variants={iconVariants}
-                    className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-button-blue/10 rounded-[4px] border-2 border-primary-dark"
+                    className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-secondary-blue/10 rounded-[4px] border-2 border-primary-dark"
                   >
                     <differential.icon
                       className="w-6 h-6 md:w-7 md:h-7 text-primary-dark"
@@ -193,7 +193,7 @@ export const Differentials: React.FC = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="mt-12 md:mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-3 bg-button-blue/10 border-2 border-primary-dark rounded-[4px] px-6 py-4">
+          <div className="inline-flex items-center gap-3 bg-secondary-blue/10 border-2 border-primary-dark rounded-[4px] px-6 py-4">
             <span className="font-aeonik-mono text-sm md:text-base uppercase text-primary-dark">
               💡 Consultoria boutique + agilidade startup
             </span>

@@ -16,7 +16,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-button-blue text-primary-dark border-2 border-primary-dark hover:-translate-y-0.5 active:translate-y-0',
+        primary: 'bg-cta-green text-white border-2 border-primary-dark hover:-translate-y-0.5 active:translate-y-0',
         secondary: 'bg-transparent text-primary-dark border-2 border-primary-dark hover:bg-neutral-beige active:bg-neutral-beige/80',
         link: 'bg-transparent text-primary-dark underline-offset-4 hover:underline',
       },

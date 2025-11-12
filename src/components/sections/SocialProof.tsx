@@ -13,6 +13,18 @@ import {
   Truck
 } from 'lucide-react';
 
+const DESKTOP_REPEAT_BASE = 5;
+const DESKTOP_REPEAT_MAX = 12;
+const DESKTOP_REPEAT_WIDTH_STEP = 240;
+
+const getDesktopRepeatCount = (width: number) => {
+  const calculated = Math.ceil(width / DESKTOP_REPEAT_WIDTH_STEP);
+  return Math.min(
+    DESKTOP_REPEAT_MAX,
+    Math.max(DESKTOP_REPEAT_BASE, calculated)
+  );
+};
+
 /**
  * SocialProof Section Component
  *
@@ -35,17 +47,29 @@ import {
  */
 export const SocialProof: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined'
+      ? window.matchMedia('(max-width: 768px)').matches
+      : false
+  );
+  const [repeatCount, setRepeatCount] = useState(() =>
+    typeof window !== 'undefined'
+      ? window.matchMedia('(max-width: 768px)').matches
+        ? 3
+        : getDesktopRepeatCount(window.innerWidth)
+      : DESKTOP_REPEAT_BASE
+  );
 
   useEffect(() => {
-    // Check if mobile on mount
-    const isMobileDevice = window.matchMedia('(max-width: 768px)').matches;
-    setIsMobile(isMobileDevice);
-
-    // Listen for resize
     const handleResize = () => {
-      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+      const isMobileDevice = window.matchMedia('(max-width: 768px)').matches;
+      setIsMobile(isMobileDevice);
+      setRepeatCount(
+        isMobileDevice ? 3 : getDesktopRepeatCount(window.innerWidth)
+      );
     };
+
+    handleResize();
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -79,31 +103,31 @@ export const SocialProof: React.FC = () => {
           Confiado por empresas de diversos setores
         </motion.h2>
 
-        {/* Sectors Marquee - Mobile overflow hidden, Desktop normal */}
-        <div className="md:overflow-visible overflow-hidden -mx-4 md:mx-0 px-4 md:px-0">
+        {/* Sectors Marquee - Clipped loop across all viewports */}
+        <div className="overflow-hidden -mx-4 md:mx-0 px-4 md:px-0">
           <SimpleMarquee
             direction="right"
             baseVelocity={marqueeVelocity}
-            repeat={isMobile ? 3 : 5}
+            repeat={repeatCount}
             slowdownOnHover={!prefersReducedMotion}
             slowDownFactor={0.5}
-            className="gap-4 md:gap-8"
+            className="w-full gap-4 md:gap-8"
           >
-          {sectors.map((sector, index) => (
-            <div
-              key={index}
-              className="shrink-0 flex items-center justify-center px-3"
-            >
-              <Badge
-                variant={sector.color}
-                size="lg"
-                icon={<sector.icon size={20} />}
-                className="py-4 transition-all hover:scale-105 whitespace-nowrap"
+            {sectors.map((sector, index) => (
+              <div
+                key={index}
+                className="shrink-0 flex items-center justify-center px-3"
               >
-                {sector.label}
-              </Badge>
-            </div>
-          ))}
+                <Badge
+                  variant={sector.color}
+                  size="lg"
+                  icon={<sector.icon size={20} />}
+                  className="py-4 transition-all hover:scale-105 whitespace-nowrap"
+                >
+                  {sector.label}
+                </Badge>
+              </div>
+            ))}
           </SimpleMarquee>
         </div>
 

@@ -190,7 +190,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
                     <div className="flex items-start gap-4">
                       {/* Avatar */}
                       <div
-                        className="flex-shrink-0 w-14 h-14 rounded-[4px] bg-button-blue border-2 border-primary-dark flex items-center justify-center"
+                        className="flex-shrink-0 w-14 h-14 rounded-[4px] bg-cta-blue border-2 border-primary-dark flex items-center justify-center"
                         aria-hidden="true"
                       >
                         <span className="font-aeonik-mono text-lg font-semibold text-primary-dark">
@@ -276,7 +276,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
                   <div className="flex items-start gap-4">
                     {/* Avatar */}
                     <div
-                      className="flex-shrink-0 w-14 h-14 rounded-[4px] bg-button-blue border-2 border-primary-dark flex items-center justify-center"
+                      className="flex-shrink-0 w-14 h-14 rounded-[4px] bg-cta-blue border-2 border-primary-dark flex items-center justify-center"
                       aria-hidden="true"
                     >
                       <span className="font-aeonik-mono text-lg font-semibold text-primary-dark">

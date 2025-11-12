@@ -149,7 +149,7 @@ export const HowItWorks: React.FC = () => {
 
   return (
     <section
-      className="relative bg-gradient-to-b from-background to-button-blue/5 py-[90px] md:py-[110px] lg:py-[180px]"
+      className="relative bg-gradient-to-b from-background to-secondary-blue/5 py-[90px] md:py-[110px] lg:py-[180px]"
       aria-labelledby="howitworks-heading"
     >
       <Container size="xl" padding="default">
@@ -322,7 +322,7 @@ export const HowItWorks: React.FC = () => {
                             type: 'spring',
                             stiffness: 180,
                           }}
-                          className="w-12 h-12 flex items-center justify-center bg-button-blue/10 rounded-[4px] border-2 border-primary-dark"
+                          className="w-12 h-12 flex items-center justify-center bg-secondary-blue/10 rounded-[4px] border-2 border-primary-dark"
                         >
                           <step.icon
                             className="w-6 h-6 text-primary-dark"
@@ -410,7 +410,7 @@ export const HowItWorks: React.FC = () => {
           <Card
             variant="elevated"
             padding="lg"
-            className="bg-gradient-to-r from-accent-teal/5 to-button-blue/5 border-accent-teal"
+            className="bg-gradient-to-r from-accent-teal/5 to-secondary-blue/5 border-accent-teal"
           >
             <CardContent className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-start gap-4">

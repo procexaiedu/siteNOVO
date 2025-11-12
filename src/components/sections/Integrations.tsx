@@ -50,7 +50,7 @@ const defaultCategories: IntegrationCategory[] = [
     id: 'communication',
     name: 'Comunicação',
     icon: <MessageCircle className="w-5 h-5" aria-hidden="true" />,
-    iconColor: 'text-button-blue',
+    iconColor: 'text-secondary-blue',
     integrations: ['WhatsApp', 'Telegram', 'Gmail', 'Outlook'],
   },
   {
@@ -78,7 +78,7 @@ const defaultCategories: IntegrationCategory[] = [
     id: 'productivity',
     name: 'Produtividade',
     icon: <Zap className="w-5 h-5" aria-hidden="true" />,
-    iconColor: 'text-amber-500',
+    iconColor: 'text-accent-purple',
     integrations: ['Google Workspace', 'Microsoft 365', 'Trello', 'Notion'],
   },
   {
@@ -232,7 +232,7 @@ export const Integrations: React.FC<IntegrationsProps> = ({
           <Card
             variant="elevated"
             padding="lg"
-            className="bg-gradient-to-br from-button-blue/10 to-accent-teal/10 border-primary-dark"
+            className="bg-gradient-to-br from-secondary-blue/10 to-accent-teal/10 border-primary-dark"
           >
             <CardContent className="flex flex-col md:flex-row items-center justify-between gap-6">
               {/* Left side: Icon + Message */}
@@ -241,7 +241,7 @@ export const Integrations: React.FC<IntegrationsProps> = ({
                   className="w-12 h-12 bg-primary-dark rounded-[4px] flex items-center justify-center flex-shrink-0"
                   aria-hidden="true"
                 >
-                  <Code2 className="w-6 h-6 text-button-blue" />
+                  <Code2 className="w-6 h-6 text-secondary-blue" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-aeonik-mono text-xl uppercase text-primary-dark">
