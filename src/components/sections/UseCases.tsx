@@ -279,7 +279,7 @@ export const UseCases: React.FC = () => {
                       <Button
                         variant="secondary"
                         size="default"
-                        className="w-full group-hover:bg-button-blue/10 transition-colors"
+                        className="w-full group-hover:bg-cta-blue/10 transition-colors"
                         aria-label={`Explorar solução ${useCase.title}`}
                       >
                         EXPLORAR
@@ -389,7 +389,6 @@ export const UseCases: React.FC = () => {
                   <Button
                     variant="secondary"
                     size="default"
-                    className="w-full group-hover:bg-cta-blue/10 transition-colors"
                     className="w-full group-hover:bg-cta-blue/10 transition-colors"
                     aria-label={`Explorar solução ${useCase.title}`}
                   >
