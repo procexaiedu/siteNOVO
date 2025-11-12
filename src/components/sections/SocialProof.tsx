@@ -79,15 +79,16 @@ export const SocialProof: React.FC = () => {
           Confiado por empresas de diversos setores
         </motion.h2>
 
-        {/* Sectors Marquee */}
-        <SimpleMarquee
-          direction="right"
-          baseVelocity={marqueeVelocity}
-          repeat={isMobile ? 3 : 5}
-          slowdownOnHover={!prefersReducedMotion}
-          slowDownFactor={0.5}
-          className="gap-6 md:gap-8"
-        >
+        {/* Sectors Marquee - Mobile overflow hidden, Desktop normal */}
+        <div className="md:overflow-visible overflow-hidden -mx-4 md:mx-0 px-4 md:px-0">
+          <SimpleMarquee
+            direction="right"
+            baseVelocity={marqueeVelocity}
+            repeat={isMobile ? 3 : 5}
+            slowdownOnHover={!prefersReducedMotion}
+            slowDownFactor={0.5}
+            className="gap-4 md:gap-8"
+          >
           {sectors.map((sector, index) => (
             <div
               key={index}
@@ -103,7 +104,8 @@ export const SocialProof: React.FC = () => {
               </Badge>
             </div>
           ))}
-        </SimpleMarquee>
+          </SimpleMarquee>
+        </div>
 
         {/* Optional: Additional Trust Statement */}
         <motion.p
