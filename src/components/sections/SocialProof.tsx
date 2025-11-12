@@ -62,7 +62,8 @@ export const SocialProof: React.FC = () => {
   ];
 
   // Adjust marquee settings based on preferences
-  const marqueeVelocity = prefersReducedMotion ? 0 : (isMobile ? 1 : 2);
+  // Desktop: 4px/s (visible animation), Mobile: 1px/s (slower on small screens)
+  const marqueeVelocity = prefersReducedMotion ? 0 : (isMobile ? 1 : 4);
 
   return (
     <section className="bg-white py-12 md:py-16">
@@ -82,7 +83,7 @@ export const SocialProof: React.FC = () => {
         <SimpleMarquee
           direction="right"
           baseVelocity={marqueeVelocity}
-          repeat={isMobile ? 3 : 2}
+          repeat={isMobile ? 3 : 5}
           slowdownOnHover={!prefersReducedMotion}
           slowDownFactor={0.5}
           className="gap-6 md:gap-8"
